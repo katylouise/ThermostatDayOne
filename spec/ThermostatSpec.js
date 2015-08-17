@@ -36,6 +36,14 @@ describe("Thermostat", function() {
     }).toThrowError("Temperature can not fall below minimum.");
   });
 
+  it("should have power saving mode on by default", function() {
+    expect(thermostat.powerSavingMode).toBe(true);
+  });
+
+  it("should be able to switch power saving mode off", function() {
+    thermostat.switchPowerSavingMode();
+    expect(thermostat.powerSavingMode).toBe(false);
+  })
   // it("should be able to play a Song", function() {
   //   player.play(song);
   //   expect(player.currentlyPlayingSong).toEqual(song);

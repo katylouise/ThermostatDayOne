@@ -1,19 +1,24 @@
 function Thermostat() {
   this.temperature = 20;
   this.minTemperature = 10;
-}
+  this.powerSavingMode = true;
+};
 
 Thermostat.prototype.increaseTemperature = function() {
   this.temperature += 1;
 
-}
+};
 
 Thermostat.prototype.decreaseTemperature = function() {
   if (this.temperature <= this.minTemperature) {
     throw new Error("Temperature can not fall below minimum.");
   }
   this.temperature -= 1;
-}
+};
+
+Thermostat.prototype.switchPowerSavingMode = function() {
+  return this.powerSavingMode = true ? false : true;
+};
 // Player.prototype.play = function(song) {
 //   this.currentlyPlayingSong = song;
 //   this.isPlaying = true;
