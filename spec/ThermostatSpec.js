@@ -55,6 +55,15 @@ describe("Thermostat", function() {
     expect(thermostat.powerSavingMode).toBe(true);
   });
 
+  it("should indicate power saving mode on when switched on", function() {
+    thermostat.switchPowerSavingMode();
+    expect(thermostat.switchPowerSavingMode()).toEqual("Power Saving Mode On");
+  });
+
+  it("should indicate power saving mode off when switched off", function() {
+    expect(thermostat.switchPowerSavingMode()).toEqual("Power Saving Mode Off");
+  });
+
   it("should be able to switch power saving mode off", function() {
     thermostat.switchPowerSavingMode();
     expect(thermostat.powerSavingMode).toBe(false);

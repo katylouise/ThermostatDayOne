@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Thermostat</title>
+  <link rel="stylesheet" href="css/thermostat.css">
+
+</head>
+<body>
+  <div id="container">
+    <div><span id="temperature"></span>°C</div>
+    <button id="increase_button" type="button">Increase</button>
+    <button id="decrease_button" type="button">Decrease</button>
+    <button id="reset_button" type="button">Reset</button>
+  </div>
+  <div id="errors"></div>
+  <form>Power Saving Mode<input id="power_saving_mode" type="checkbox" checked></form>
+  <script src="src/Thermostat.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

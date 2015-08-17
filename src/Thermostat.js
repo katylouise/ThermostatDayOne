@@ -7,7 +7,7 @@ function Thermostat() {
 
 Thermostat.prototype.increaseTemperature = function(number) {
   number = number || 1;
-  if (this.temperature + number >= this.maxTemperature) {
+  if (this.temperature + number > this.maxTemperature) {
     throw new Error("Temperature can not go above maximum.")
   }
   return this.temperature += number;
@@ -15,7 +15,7 @@ Thermostat.prototype.increaseTemperature = function(number) {
 
 Thermostat.prototype.decreaseTemperature = function(number) {
   number = number || 1;
-  if (this.temperature - number <= this.minTemperature) {
+  if (this.temperature - number < this.minTemperature) {
     throw new Error("Temperature can not go below minimum.");
   }
   return this.temperature -= number;
