@@ -15,8 +15,8 @@ describe("Thermostat", function() {
   });
 
   it("should be able to increase temperature by a number", function() {
-    thermostat.increaseTemperature(5);
-    expect(thermostat.temperature).toEqual(25);
+    thermostat.increaseTemperature(4);
+    expect(thermostat.temperature).toEqual(24);
   });
 
   it("should be able to decrease temperature", function() {
@@ -39,10 +39,16 @@ describe("Thermostat", function() {
     expect(thermostat.minTemperature).toEqual(10);
   });
 
-  it("should not allow temperature to fall below minimum temperature", function() {
+  it("should not allow temperature to go below minimum temperature", function() {
     expect(function() {
       thermostat.decreaseTemperature(11);
-    }).toThrowError("Temperature can not fall below minimum.");
+    }).toThrowError("Temperature can not go below minimum.");
+  });
+
+  it("should not allow temperature to go above maximum temperature", function() {
+    expect(function() {
+      thermostat.increaseTemperature(6);
+    }).toThrowError("Temperature can not go above maximum.");
   });
 
   it("should have power saving mode on by default", function() {
@@ -58,14 +64,14 @@ describe("Thermostat", function() {
     expect(thermostat.maxTemperature).toEqual(25);
   });
 
-  it("should be able to change the maximum temperature", function() {
-    thermostat.setMaxTemperature();
+  it("should have a maximum temperature of 32 degrees if power saving mode is off", function() {
+    thermostat.switchPowerSavingMode();
     expect(thermostat.maxTemperature).toEqual(32);
   });
 
-  xit("should have a maximum temperature of 32 degrees if power saving mode is off", function() {
-    thermostat.switchPowerSavingMode();
-    expect(thermostat.maxTemperature).toEqual(32);
+  it("can reset the temperature to the default", function() {
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
   });
   // it("should be able to play a Song", function() {
   //   player.play(song);
