@@ -1,41 +1,40 @@
 thermostat = new Thermostat();
 
-TemperatureColor = function() {
+var temperatureColor = function() {
   temperature.classList.remove(temperature.className);
   temperature.classList.add(thermostat.setColour());
 }
 
-Update = function() {
+var update = function() {
   temperature.innerHTML = thermostat.temperature;
-  TemperatureColor();
+  temperatureColor();
 }
 
 var temperature = document.getElementsByTagName('span')[0];
-temperature.innerHTML = thermostat.temperature;
-TemperatureColor();
 
+update();
 
 var increase_button = document.getElementsByTagName('button')[0];
 increase_button.onclick = function() {
   thermostat.increaseTemperature();
-  Update();
+  update();
   };
 
 var decrease_button = document.getElementsByTagName('button')[1];
 decrease_button.onclick = function() {
   thermostat.decreaseTemperature();
-  Update();
+  update();
 }
 
 var reset_button = document.getElementsByTagName('button')[2];
 reset_button.onclick = function() {
   thermostat.reset();
-  Update();
+  update();
 }
 
 var power_saving_mode = document.getElementById('unchecked');
 power_saving_mode.onchange = function() {
   thermostat.switchPowerSavingMode();
-  Update();
+  update();
 }
 
