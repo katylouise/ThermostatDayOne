@@ -1,15 +1,7 @@
 thermostat = new Thermostat();
 
 TemperatureColor = function() {
-  if (thermostat.temperature < 18) {
-    temperature.style.color = "green";
-  }
-  else if (thermostat.temperature < 25) {
-    temperature.style.color = "orange"
-  }
-  else {
-    temperature.style.color = "red"
-  }
+  temperature.style.color = thermostat.setColour();
 }
 
 var temperature = document.getElementById('temperature');
