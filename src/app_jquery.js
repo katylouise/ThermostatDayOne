@@ -1,35 +1,37 @@
 $(document).ready(function() {
   thermostat = new Thermostat();
 
-  var temperature = $("temperature").innerHTML;
-  temperature = thermostat.temperature;
+  update = function() {
+    $(".temperature").text(thermostat.temperature);
+  }
 
-  // TemperatureColor = function() {
-  // temperature.style.color = thermostat.setColour();
-  // }
+  temperatureColor = function() {
+    $(".temperature")
+  }
 
-  // TemperatureColor();
+  update();
 
-  $("increase_button").click(function() {
+  $(".increase").click(function() {
     thermostat.increaseTemperature();
-    temperature = thermostat.temperature;
+    update();
     // TemperatureColor();
   });
 
-  $("decrease_button").click(function() {
+  $(".decrease").click(function() {
     thermostat.decreaseTemperature();
-    temperature = thermostat.temperature;
+    update();
     // TemperatureColor();
   });
 
-  $("reset_button").click(function() {
+  $(".reset").click(function() {
     thermostat.reset();
-    temperature = thermostat.temperature;
+    update();
     // TemperatureColor();
   });
 
   $("input:checkbox").change(function() {
     thermostat.switchPowerSavingMode();
+    update();
     // TemperatureColor();
   })
 });
