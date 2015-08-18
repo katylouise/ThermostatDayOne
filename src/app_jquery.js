@@ -1,12 +1,14 @@
 $(document).ready(function() {
   thermostat = new Thermostat();
 
-  update = function() {
-    $(".temperature").text(thermostat.temperature);
+  temperatureColor = function() {
+    $("span").removeClass();
+    $("span").addClass(thermostat.setColour());
   }
 
-  temperatureColor = function() {
-    $(".temperature")
+  update = function() {
+    $("span").text(thermostat.temperature);
+    temperatureColor();
   }
 
   update();
@@ -14,25 +16,25 @@ $(document).ready(function() {
   $(".increase").click(function() {
     thermostat.increaseTemperature();
     update();
-    // TemperatureColor();
+    temperatureColor();
   });
 
   $(".decrease").click(function() {
     thermostat.decreaseTemperature();
     update();
-    // TemperatureColor();
+    temperatureColor();
   });
 
   $(".reset").click(function() {
     thermostat.reset();
     update();
-    // TemperatureColor();
+    temperatureColor();
   });
 
   $("input:checkbox").change(function() {
     thermostat.switchPowerSavingMode();
     update();
-    // TemperatureColor();
+    temperatureColor();
   })
 });
 
