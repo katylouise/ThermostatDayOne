@@ -5,7 +5,7 @@ body {
 
 article {
   text-align: center;
-  margin-top: 15%;
+  margin-top: 5%;
 }
 
 h3 {
@@ -30,6 +30,17 @@ button {
 
 .text--green {
   color: green;
+}
+
+.get_weather {
+  font-size: 30pt;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.weather {
+  font-size: 35pt;
+  margin-top: 20px;
 }
 
 .wrap {
