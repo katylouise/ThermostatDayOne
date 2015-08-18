@@ -85,15 +85,15 @@ describe("Thermostat", function() {
 
   it("should set the colour to green if temperature is below 18 degrees", function() {
     thermostat.decreaseTemperature(5);
-    expect(thermostat.setColour()).toEqual("green");
+    expect(thermostat.setColour()).toEqual("text--green");
   });
 
   it("should set the colour to orange if temperature is below 25 degrees", function() {
-    expect(thermostat.setColour()).toEqual("orange");
+    expect(thermostat.setColour()).toEqual("text--orange");
   });
 
   it("should set the colour to red if temperature is above 25 degrees", function() {
     thermostat.increaseTemperature(5);
-    expect(thermostat.setColour()).toEqual("red");
+    expect(thermostat.setColour()).toEqual("text--red");
   });
 });

@@ -54,12 +54,12 @@ Thermostat.prototype.reset = function() {
 
 Thermostat.prototype.setColour = function() {
   if (this.temperature < 18) {
-    return "green";
+    return "text--green";
   }
   else if (this.temperature < 25) {
-    return "orange";
+    return "text--orange";
   }
   else {
-    return "red";
+    return "text--red";
   }
 };
