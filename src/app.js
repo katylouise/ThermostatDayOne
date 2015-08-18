@@ -30,8 +30,9 @@ reset_button.onclick = function() {
   TemperatureColor();
 }
 
-var power_saving_mode = document.getElementById('power_saving_mode');
+var power_saving_mode = document.getElementById('unchecked');
 power_saving_mode.onchange = function() {
   thermostat.switchPowerSavingMode();
+  temperature.innerHTML = thermostat.temperature;
 }
 
