@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8">
   <title>Thermostat</title>
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/thermostat.css">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text.css" href="css/thermostat.css">
 
 </head>
 <body>
   <article>
-    <section><span class="temperature"></span>°C</section>
-    <button id="increase_button" type="button" background-color="blue">Increase</button>
+    <section><span id="temperature"></span>°C</section>
+    <button id="increase_button" type="button">Increase</button>
     <button id="decrease_button" type="button">Decrease</button>
     <button id="reset_button" type="button">Reset</button>
-    <form>Power Saving Mode<input id="power_saving_mode" type="checkbox" checked></form>
   </article>
+    <div class="wrap">
+      <label for="unchecked" class="lbl"></label>
+      <input type="checkbox" id="unchecked" class="cbx hidden"/>
+    </div>
+
 
   <script src="src/Thermostat.js"></script>
   <script src="src/app.js"></script>
