@@ -1,5 +1,9 @@
 function Thermostat() {
-  this.temperature = 20; //change these magic numbers to constants
+  const DEFAULT_TEMP = 20;
+  this.getDefaultTemp = function() {
+    return DEFAULT_TEMP;
+  }
+  this.temperature = this.getDefaultTemp(); //change these magic numbers to constants
   this.minTemperature = 10;
   this.maxTemperature = 25;
   this.powerSavingMode = true;

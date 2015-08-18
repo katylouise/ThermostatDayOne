@@ -80,7 +80,7 @@ describe("Thermostat", function() {
 
   it("can reset the temperature to the default", function() {
     thermostat.reset();
-    expect(thermostat.temperature).toEqual(20);
+    expect(thermostat.temperature).toEqual(thermostat.getDefaultTemp());
   });
 
   it("should set the colour to green if temperature is below 18 degrees", function() {
