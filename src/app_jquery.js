@@ -5,26 +5,32 @@ $(document).ready(function() {
   $(".get_weather").click(function(event) {
     event.preventDefault();
     // var city = $(".get_weather").val();
-    var request = getWeatherInfo();
+    // var request = getWeatherInfo();
 
-    if(request.status == 304 || request.status == 200) {
-      showWeather(JSON.parse(request.responseText));
-    }
-    else {
-      return "There was an error.";
-    }
+    // if(request.status == 304 || request.status == 200) {
+    //   showWeather(JSON.parse(request.responseText));
+    // }
+    // else {
+    //   return "There was an error.";
+    // }
+    getWeatherInfo();
   });
 
-  function getWeatherInfo() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?id=2643743&APPID={e3771f9e183904f9fa76308c7ef5505c}", false);
-    xhr.send();
-    return xhr;
-  };
-
-  function showWeather(weather_info) {
+   function showWeather(weather_info) {
     $(".weather").text(weather_info.weather[0].description);
   };
+
+  function getWeatherInfo() {
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?id=2643743&units=metric&APPID={e3771f9e183904f9fa76308c7ef5505c}", function(result) {
+      showWeather(result);
+    })
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?id=2643743&APPID={e3771f9e183904f9fa76308c7ef5505c}", false);
+    // xhr.send();
+    // return xhr;
+  };
+
+
 
   function temperatureColor() {
     $("span").removeClass();
