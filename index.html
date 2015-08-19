@@ -10,14 +10,14 @@
 <body>
   <article>
     <section><span class="temperature"></span>°C</section>
-    <button class="increase" type="button">Increase</button>
-    <button class="decrease" type="button">Decrease</button>
-    <button class="reset" type="button">Reset</button>
+    <button data-temp-control="up" type="button">Increase</button>
+    <button data-temp-control="down" type="button">Decrease</button>
+    <button data-temp-control="reset" type="button">Reset</button>
     <input name="power_saving_mode" type="checkbox" class="cbx hidden" id="unchecked" checked/>
     <label for="unchecked" class="lbl"></label>
     <h3>Power Saving Mode</h3>
-    <button class="get_weather">Today's Weather</button>
-    <!--For the input box - maybe use a form? -->
+    <input name="city" type="text" value="Enter your city">
+    <button class="get_weather">Get today's weather</button>
     <section class="weather"></section>
     <section class="weather_temp"></section>
     <section class="weather_image"></section>

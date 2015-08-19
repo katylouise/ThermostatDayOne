@@ -13,7 +13,8 @@ $(document).ready(function() {
     // else {
     //   return "There was an error.";
     // }
-    getWeatherInfo();
+    var city = $("input:text").val();
+    getWeatherInfo(city);
   });
 
    function showWeather(weather_info) {
@@ -23,8 +24,8 @@ $(document).ready(function() {
     $(".weather_image").html("<img src=" + weather_image_src + ">");
   };
 
-  function getWeatherInfo() {
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?id=2643743&units=metric&APPID={e3771f9e183904f9fa76308c7ef5505c}", function(result) {
+  function getWeatherInfo(city) {
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID={e3771f9e183904f9fa76308c7ef5505c}", function(result) {
       showWeather(result);
     })
     // var xhr = new XMLHttpRequest();
@@ -46,19 +47,19 @@ $(document).ready(function() {
 
   update();
 
-  $(".increase").click(function() {
+  $("button[data-temp-control='up']").click(function() {
     thermostat.increaseTemperature();
     update();
     temperatureColor();
   });
 
-  $(".decrease").click(function() {
+  $("button[data-temp-control='down']").click(function() {
     thermostat.decreaseTemperature();
     update();
     temperatureColor();
   });
 
-  $(".reset").click(function() {
+  $("button[data-temp-control='reset']").click(function() {
     thermostat.reset();
     update();
     temperatureColor();
