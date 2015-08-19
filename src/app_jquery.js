@@ -18,7 +18,9 @@ $(document).ready(function() {
 
    function showWeather(weather_info) {
     $(".weather").text(weather_info.weather[0].description);
-    $(".weather_temp").text(weather_info.main.temp + "°C");
+    $(".weather_temp").text(Math.round(weather_info.main.temp) + "°C");
+    var weather_image_src = "http://openweathermap.org/img/w/" + weather_info.weather[0].icon + ".png";
+    $(".weather_image").html("<img src=" + weather_image_src + ">");
   };
 
   function getWeatherInfo() {
