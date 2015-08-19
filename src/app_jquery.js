@@ -18,6 +18,7 @@ $(document).ready(function() {
 
    function showWeather(weather_info) {
     $(".weather").text(weather_info.weather[0].description);
+    $(".weather_temp").text(weather_info.main.temp + "°C");
   };
 
   function getWeatherInfo() {
@@ -33,8 +34,7 @@ $(document).ready(function() {
 
 
   function temperatureColor() {
-    $("span").removeClass();
-    $("span").addClass(thermostat.setColour());
+    $("span").removeClass().addClass(thermostat.setColour());
   };
 
   function update() {

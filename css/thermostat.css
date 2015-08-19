@@ -38,7 +38,7 @@ button {
   text-align: center;
 }
 
-.weather {
+.weather, .weather_temp {
   font-size: 35pt;
   margin-top: 20px;
 }
