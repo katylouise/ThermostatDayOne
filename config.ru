@@ -1,3 +1,5 @@
 require './server'
+require 'rubygems'
 
-run Sinatra::Application
+
+run ThermostatController

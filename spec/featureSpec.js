@@ -96,12 +96,16 @@ describe('Thermostat',function(){
   describe("Ajax tests", function() {
 
     it("should call weather API", function() {
-      spyOn($, "getJSON");
+      spyOn($, "getJSON").and.returnValue("sunny");
       $(".get_weather").click();
       expect($.getJSON).toHaveBeenCalled();
-      expect(".weather").toBeTruthy();
+      expect($(".weather").html()).toEqual("sunny");
       expect(".weather_temp").toBeTruthy();
       expect(".weather_image").toBeTruthy();
+    });
+
+    it("should test this - expect false", function() {
+      expect($(".weather").html()).toBeTruthy();
     });
   });
 });

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Thermostat</title>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text.css" href="css/thermostat.css">
+</head>
+<body>
+  <article>
+    <section><span class="temperature"></span>°C</section>
+    <button data-temp-control="up" type="button">Increase</button>
+    <button data-temp-control="down" type="button">Decrease</button>
+    <button data-temp-control="reset" type="button">Reset</button>
+    <input name="power_saving_mode" type="checkbox" class="cbx hidden" id="unchecked" checked/>
+    <label for="unchecked" class="lbl"></label>
+    <h3>Power Saving Mode</h3>
+    <input name="city" type="text" value="Enter your city" onclick="this.select()">
+    <button class="get_weather">Get current weather</button>
+    <section class="weather"></section>
+    <section class="weather_temp"></section>
+    <section class="weather_image"></section>
+  </article>
+  <script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="src/thermostat.js"></script>
+  <script type="text/javascript" src="src/app_jquery.js"></script>
+</body>
+</html>
