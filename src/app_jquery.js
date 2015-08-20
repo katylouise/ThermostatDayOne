@@ -3,7 +3,7 @@ $(document).ready(function() {
   thermostat = new Thermostat();
 
   $(".get_weather").click(function(event) {
-    event.preventDefault();
+    // event.preventDefault();
     // var city = $(".get_weather").val();
     // var request = getWeatherInfo();
 
@@ -14,6 +14,14 @@ $(document).ready(function() {
     //   return "There was an error.";
     // }
     var city = $("input:text").val();
+    // var request = getWeatherInfo(city);
+    // if(request.status == 200) {
+    //   showWeather(request);
+    // }
+    // else {
+    //   console.log(request.status);
+    //   noCity();
+    // }
     getWeatherInfo(city);
   });
 
@@ -25,17 +33,22 @@ $(document).ready(function() {
   };
 
 
+  function noCity() {
+      $(".weather").text("I don't know that city!");
+    };
+
   function getWeatherInfo(city) {
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID={e3771f9e183904f9fa76308c7ef5505c}", function(result) {
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&type=accurate&APPID=e3771f9e183904f9fa76308c7ef5505c", function(result) {
       showWeather(result);
-    }).fail(function() {
-      $(".weather").text("I don't know that city!"); //not working currently - why?
-    });
+    })
+    };
+
+
     // var xhr = new XMLHttpRequest();
     // xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?id=2643743&APPID={e3771f9e183904f9fa76308c7ef5505c}", false);
     // xhr.send();
     // return xhr;
-  };
+  // };
 
 
 

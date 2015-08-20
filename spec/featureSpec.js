@@ -99,6 +99,9 @@ describe('Thermostat',function(){
       spyOn($, "getJSON");
       $(".get_weather").click();
       expect($.getJSON).toHaveBeenCalled();
+      expect(".weather").toBeTruthy();
+      expect(".weather_temp").toBeTruthy();
+      expect(".weather_image").toBeTruthy();
     });
   });
 });
