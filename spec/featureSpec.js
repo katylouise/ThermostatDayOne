@@ -104,7 +104,8 @@ describe('Thermostat',function(){
       $(".get_weather").click();
       expect($.getJSON).toHaveBeenCalled();
       expect($(".weather").html()).toEqual("light intensity drizzle");
-      expect($(".weather_temp").html()).toBeTruthy();
+      expect($(".weather_temp").html()).toEqual("20°C");
+      expect($(".weather_image").html()).toBeTruthy();
     });
   });
 });
