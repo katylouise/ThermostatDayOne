@@ -59,6 +59,7 @@ $(document).ready(function() {
 
       $("span").text(result.temp);
         temperatureColor();
+        thermostat.temperature = parseInt(result.temp);
     });
   }
   function temperatureColor() {
@@ -76,14 +77,21 @@ $(document).ready(function() {
   // };
 
   // initialTemp();
-
-  sendTemp(getTemp);
+  // var oldTemp = getTemp();
+  // console.log(oldTemp)
+  // if (oldTemp === null) {
+  //   sendTemp(getTemp);
+  // }
+  // else {
+  //   thermostat.temperature = $("span").val();
+  //   temperatureColor();
+  // }
+  getTemp();
+  sendTemp(getTemp());
   temperatureColor();
-  console.log(thermostat.temperature);
 
   $("button[data-temp-control='up']").click(function() {
     thermostat.increaseTemperature();
-    console.log(thermostat.temperature);
     sendTemp(getTemp);
   });
 

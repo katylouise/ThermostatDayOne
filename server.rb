@@ -13,7 +13,11 @@ set :views, Proc.new { File.join(root, "views") }
   end
 
   get '/temperature' do
-    temp = {temp: session[:temperature]}
+    if session[:temperature]
+      temp = {temp: session[:temperature]}
+    else
+      temp = {temp: 20}
+    end
     JSON.generate(temp)
   end
 
