@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // APIKEY = ENV['OPEN_WEATHER_KEY'];
-  thermostat = new Thermostat();
+  var thermostat = new Thermostat();
 
   $(".get_weather").click(function(event) {
     // event.preventDefault();
@@ -50,41 +50,57 @@ $(document).ready(function() {
     // return xhr;
   // };
 
+  var sendTemp = function(callback) {
+    $.post("/temperature", {temp: thermostat.temperature}, callback
+  )};
 
+  var getTemp = function() {
+    $.getJSON("/temperature", function(result) {
 
+      $("span").text(result.temp);
+        temperatureColor();
+    });
+  }
   function temperatureColor() {
     $("span").removeClass().addClass(thermostat.setColour());
   };
 
-  function update() {
-    $("span").text(thermostat.temperature);
-    temperatureColor();
-  };
+  // function initialTemp() {
+  //   $("span").text(thermostat.temperature);
+  //   temperatureColor();
+  // }
 
-  update();
+  // function update(result) {
+  //   temperatureColor();
+  //   $("span").text(result.temperature);
+  // };
+
+  // initialTemp();
+
+  sendTemp(getTemp);
+  temperatureColor();
+  console.log(thermostat.temperature);
 
   $("button[data-temp-control='up']").click(function() {
     thermostat.increaseTemperature();
-    update();
-    temperatureColor();
+    console.log(thermostat.temperature);
+    sendTemp(getTemp);
   });
 
   $("button[data-temp-control='down']").click(function() {
     thermostat.decreaseTemperature();
-    update();
-    temperatureColor();
+    sendTemp(getTemp);
   });
 
   $("button[data-temp-control='reset']").click(function() {
     thermostat.reset();
-    update();
-    temperatureColor();
+    sendTemp(getTemp);
   });
 
   $("input:checkbox").change(function() {
     thermostat.switchPowerSavingMode();
-    update();
+    sendTemp(getTemp);
     temperatureColor();
-  })
+  });
 });
 
