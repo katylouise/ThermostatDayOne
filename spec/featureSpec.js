@@ -73,12 +73,12 @@ describe('Thermostat',function(){
       $("button[data-temp-control='down']").click();
     }
     expect("span").toHaveClass("text--green");
-    // expect($("span").css("color")).toBe("rgb(0, 128, 0)");
+    expect($("span").css("color")).toBe("rgb(0, 128, 0)");
   });
 
   it("should have an orange temperature if below 25 degrees", function() {
     expect("span").toHaveClass("text--orange");
-    // expect($("span").css("color")).toBe("rgb(255, 165, 0)");
+    expect($("span").css("color")).toBe("rgb(255, 165, 0)");
   });
 
   it("should have a red temperature if above 25 degrees", function() {
@@ -86,7 +86,7 @@ describe('Thermostat',function(){
       $("button[data-temp-control='up']").click();
     }
     expect("span").toHaveClass("text--red");
-    // expect($("span").css("color")).toBe("rgb(255, 0, 0)");
+    expect($("span").css("color")).toBe("rgb(255, 0, 0)");
   })
 
   it("should have power saving mode checked at start", function() {
@@ -96,16 +96,16 @@ describe('Thermostat',function(){
   describe("Ajax tests", function() {
 
     it("should call weather API", function() {
-      spyOn($, "getJSON").and.returnValue("sunny");
+      spyOn($, "getJSON").and.callFake(function(url, callback) {
+        callback({"weather":[{"description":"light intensity drizzle","icon":"09d"}],"main":{"temp":20.28}}
+        );
+      });
+      $("input[name=city]").val("London");
       $(".get_weather").click();
       expect($.getJSON).toHaveBeenCalled();
-      expect($(".weather").html()).toEqual("sunny");
-      expect(".weather_temp").toBeTruthy();
-      expect(".weather_image").toBeTruthy();
-    });
-
-    it("should test this - expect false", function() {
-      expect($(".weather").html()).toBeTruthy();
+      expect($(".weather").html()).not.toEqual("");
+      expect($(".weather_temp").html()).not.toEqual("");
+      expect($(".weather_image").html()).toBeTruthy();
     });
   });
 });
